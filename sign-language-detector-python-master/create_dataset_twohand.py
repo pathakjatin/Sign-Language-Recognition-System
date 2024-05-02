@@ -32,7 +32,7 @@ for dir_ in os.listdir(DATA_DIR):
 
         if not (results.multi_hand_landmarks is None):
                 n = len(results.multi_hand_landmarks)
-                if n == 1:
+                if n == 2:
                     try:
                         for hand_landmarks in results.multi_hand_landmarks:
                              for i in range(len(hand_landmarks.landmark)):
@@ -50,7 +50,7 @@ for dir_ in os.listdir(DATA_DIR):
 
 
                     except:
-                            data_aux(np.zeros([1,63], dtype=int)[0])
+                            data_aux(np.zeros([1,189], dtype=int)[0])
 
 
 
@@ -58,6 +58,6 @@ for dir_ in os.listdir(DATA_DIR):
 
 
 
-f = open('onehand.pickle', 'wb')
+f = open('twohand.pickle', 'wb')
 pickle.dump({'data': data, 'labels': labels}, f)
 f.close()

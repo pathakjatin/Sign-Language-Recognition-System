@@ -1,14 +1,16 @@
 import os
 
-import cv2
+import numpy as np
+import cv2 
+from pathlib import Path
 
 
 DATA_DIR = './data'
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
 
-number_of_classes = 26
-dataset_size = 25
+number_of_classes = 2
+dataset_size = 100
 
 cap = cv2.VideoCapture(0)
 for j in range(number_of_classes):
@@ -20,7 +22,7 @@ for j in range(number_of_classes):
     done = False
     while True:
         ret, frame = cap.read()
-        cv2.putText(frame, 'Press "Q" ! :)', (100, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3,
+        cv2.putText(frame, 'Ready? Press "Q" ! :)', (100, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3,
                     cv2.LINE_AA)
         cv2.imshow('frame', frame)
         if cv2.waitKey(25) == ord('q'):
